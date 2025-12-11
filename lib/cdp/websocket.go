@@ -10,6 +10,7 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"runtime/debug"
 	"sync"
 )
 
@@ -53,6 +54,11 @@ func (ws *WebSocket) Connect(ctx context.Context, wsURL string, header http.Head
 
 // Close the underlying connection.
 func (ws *WebSocket) Close() error {
+	// Show the stacktrace
+	fmt.Println("============ Closing WebSocket connection =============")
+	debug.PrintStack()
+	fmt.Println("============ Closing WebSocket connection =============")
+
 	return ws.conn.Close()
 }
 
