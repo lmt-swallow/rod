@@ -55,9 +55,9 @@ func (ws *WebSocket) Connect(ctx context.Context, wsURL string, header http.Head
 // Close the underlying connection.
 func (ws *WebSocket) Close() error {
 	// Show the stacktrace
-	fmt.Println("============ Closing WebSocket connection =============")
+	fmt.Println("============ Closing WebSocket connection (WebSocket) start =============")
 	debug.PrintStack()
-	fmt.Println("============ Closing WebSocket connection =============")
+	fmt.Println("============ Closing WebSocket connection (WebSocket) end =============")
 
 	return ws.conn.Close()
 }

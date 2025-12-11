@@ -177,6 +177,10 @@ func (sr *StreamReader) Read(p []byte) (n int, err error) {
 
 // Close the stream, discard any temporary backing storage.
 func (sr *StreamReader) Close() error {
+	fmt.Println("============ Closing StreamReader (StreamReader) start =============")
+	debug.PrintStack()
+	fmt.Println("============ Closing StreamReader (StreamReader) end =============")
+
 	return proto.IOClose{Handle: sr.handle}.Call(sr.c)
 }
 

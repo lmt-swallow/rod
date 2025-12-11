@@ -7,6 +7,7 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"runtime/debug"
 	"sync"
 	"time"
 
@@ -315,6 +316,10 @@ func (p *Page) StopLoading() error {
 
 // Close tries to close page, running its beforeunload hooks, if has any.
 func (p *Page) Close() error {
+	fmt.Println("============ Closing Page (Page) start =============")
+	debug.PrintStack()
+	fmt.Println("============ Closing Page (Page) end =============")
+
 	p.browser.targetsLock.Lock()
 	defer p.browser.targetsLock.Unlock()
 

@@ -9,7 +9,9 @@ package rod
 
 import (
 	"context"
+	"fmt"
 	"reflect"
+	"runtime/debug"
 	"strings"
 	"sync"
 	"time"
@@ -176,6 +178,10 @@ func (b *Browser) Connect() error {
 
 // Close the browser.
 func (b *Browser) Close() error {
+	fmt.Println("============ Closing Browser (Browser) start =============")
+	debug.PrintStack()
+	fmt.Println("============ Closing Browser (Browser) end =============")
+
 	if b.BrowserContextID == "" {
 		return proto.BrowserClose{}.Call(b)
 	}
